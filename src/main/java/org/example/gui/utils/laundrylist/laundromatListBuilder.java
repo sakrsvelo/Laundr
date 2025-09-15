@@ -9,8 +9,8 @@ public class laundromatListBuilder {
 
     public static JPanel createLaundromatList() {
         JPanel laundryList = new JPanel();
-        laundryList.setBackground(new Color(0xF8FBFD));
-        laundryList.setBorder(BorderFactory.createLineBorder(new Color(0x31A4E5), 3, true));
+        laundryList.setBackground(UIManager.getColor("background"));
+        laundryList.setBorder(BorderFactory.createLineBorder(UIManager.getColor("listBorder"), 3, true));
         laundryList.setPreferredSize(new Dimension(440, 720));
         laundryList.setLayout(new BoxLayout(laundryList, BoxLayout.Y_AXIS));
 

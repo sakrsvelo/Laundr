@@ -31,7 +31,7 @@ public class laundromatPanels {
         namePanel.setPreferredSize(new Dimension(200, 30));
         namePanel.setBorder(
                 BorderFactory.createCompoundBorder(
-                        BorderFactory.createMatteBorder(2, 0, 0, 2, UIManager.getColor("accentColor")),
+                        BorderFactory.createMatteBorder(2, 0, 0, 2, UIManager.getColor("listBorder")),
                         BorderFactory.createEmptyBorder(0, 20, 0, 0)
                 ));
 
@@ -54,6 +54,7 @@ public class laundromatPanels {
                 "Icons/distancefromUser.svg", 15, 15, 5, 5, 0, 0, false
         );
         distanceLabel.setText(distance);
+        distanceLabel.setFont(UIManager.getFont("description.Font"));
         distanceLabel.setForeground(UIManager.getColor("foreground"));
         distanceLabel.setHorizontalAlignment(SwingConstants.LEFT);
 
@@ -61,6 +62,7 @@ public class laundromatPanels {
                 "Icons/deliveryperiod.svg", 15, 15, 0, 5, 5, 0, false
         );
         deliveryLabel.setText(delivery);
+        deliveryLabel.setFont(UIManager.getFont("description.Font"));
         deliveryLabel.setForeground(UIManager.getColor("foreground"));
         deliveryLabel.setHorizontalAlignment(SwingConstants.LEFT);
 

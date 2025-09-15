@@ -26,7 +26,6 @@ public class Landing extends JPanel {
         centerLayout = new CardLayout();
         centerPanel = new JPanel(centerLayout);
 
-        // Add the actual cards
         centerPanel.add(new Dashboard(), "DASHBOARD");
         centerPanel.add(new Profile(), "PROFILE");
         centerPanel.add(new Orders(), "ORDERS");
@@ -40,6 +39,7 @@ public class Landing extends JPanel {
     }
 
     public void showCard(String name) {
+
         centerLayout.show(centerPanel, name);
     }
 
