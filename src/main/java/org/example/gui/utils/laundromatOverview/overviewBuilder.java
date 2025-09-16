@@ -14,9 +14,9 @@ public class overviewBuilder {
     private Icon distanceIcon = null;
     private Icon deliveryIcon = null;
 
-    private Color mainTextColor = new Color(0x273755);
-    private Font nameFont = new Font("Fredoka", Font.BOLD, 28);
-    private Font infoFont = new Font("Fredoka", Font.PLAIN, 14);
+    private Color mainTextColor = UIManager.getColor("foreground");
+    private Font nameFont = UIManager.getFont("Title.font");
+    private Font infoFont = UIManager.getFont("description.Font");
 
     public overviewBuilder setName(String name) {
         this.name = name;
@@ -97,7 +97,7 @@ public class overviewBuilder {
         JPanel distanceDeliveryPanel = new JPanel();
         distanceDeliveryPanel.setLayout(new BoxLayout(distanceDeliveryPanel, BoxLayout.Y_AXIS));
         distanceDeliveryPanel.setOpaque(false);
-        distanceDeliveryPanel.setBorder(BorderFactory.createMatteBorder(0, 2, 0, 0, new Color(0x31A4E5)));
+        distanceDeliveryPanel.setBorder(BorderFactory.createMatteBorder(0, 2, 0, 0, UIManager.getColor("listBorder")));
 
         JLabel distanceLabel;
         if (distanceIcon != null) {

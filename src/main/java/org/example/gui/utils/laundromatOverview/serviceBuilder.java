@@ -18,8 +18,8 @@ public class serviceBuilder {
         servicesLabelPanel.setPreferredSize(new Dimension(0, 45));
 
         JLabel servicesLabel = new JLabel("Services:");
-        servicesLabel.setFont(new Font("Fredoka", Font.BOLD, 20));
-        servicesLabel.setForeground(new Color(0x273755));
+        servicesLabel.setFont(UIManager.getFont("Heading.font"));
+        servicesLabel.setForeground(UIManager.getColor("foreground"));
         servicesLabelPanel.add(servicesLabel, BorderLayout.WEST);
 
         JPanel servicesPanel = new JPanel(new GridLayout(1, 3, 10, 0));

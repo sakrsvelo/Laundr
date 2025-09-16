@@ -21,7 +21,7 @@ public class setPanels {
         panel.setPreferredSize(dim);
 
         JLabel label = new JLabel(title, icon, SwingConstants.CENTER);
-        label.setFont(new Font("Fredoka", Font.BOLD, 20));
+        label.setFont(UIManager.getFont("Title.font"));
         label.setForeground(UIManager.getColor("accentColor"));
         label.setHorizontalTextPosition(SwingConstants.CENTER); //text centered horizontally
         label.setVerticalTextPosition(SwingConstants.BOTTOM);    //text below icon
@@ -41,12 +41,12 @@ public class setPanels {
         }
 
         JLabel userLabel = new JLabel(userName, userIcon, SwingConstants.LEFT);
-        userLabel.setFont(new Font("Fredoka", Font.BOLD, 16));
+        userLabel.setFont(UIManager.getFont("Heading.font"));
         userLabel.setForeground(textColor);
         userLabel.setAlignmentX(Component.LEFT_ALIGNMENT); //align left
 
         JLabel reviewLabel = new JLabel("<html>" + reviewText + "</html>");
-        reviewLabel.setFont(new Font("Fredoka", Font.PLAIN, 14));
+        reviewLabel.setFont(UIManager.getFont("defaultFont"));
         reviewLabel.setForeground(textColor);
         reviewLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
         reviewLabel.setBorder(BorderFactory.createEmptyBorder(5, iconSize + 5, 5, 0));

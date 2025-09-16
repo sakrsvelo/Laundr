@@ -20,7 +20,7 @@ public class detailsBuilder {
 
     private int width = 740;
     private int height = 660;
-    private Color bgColor = new Color(0xF8FBFD);
+    private Color bgColor = UIManager.getColor("background");
 
     //================ Setters ==================
     public detailsBuilder setName(String name) {
@@ -103,8 +103,8 @@ public class detailsBuilder {
         offeringsLabelPanel.setPreferredSize(new Dimension(0, 50));
 
         JLabel offeringsLabel = new JLabel("What We Offer:");
-        offeringsLabel.setFont(new Font("Fredoka", Font.BOLD, 20));
-        offeringsLabel.setForeground(new Color(0x273755));
+        offeringsLabel.setFont(UIManager.getFont("Heading.font"));
+        offeringsLabel.setForeground(UIManager.getColor("foreground"));
         offeringsLabelPanel.add(offeringsLabel, BorderLayout.WEST);
 
         JPanel offeringsList = new JPanel();
@@ -124,7 +124,7 @@ public class detailsBuilder {
 
         for (String offering : offerings) {
             JLabel bulletLabel = new JLabel("• " + offering);
-            bulletLabel.setFont(new Font("Fredoka", Font.PLAIN, 18));
+            bulletLabel.setFont(UIManager.getFont("defaultFont"));
             bulletLabel.setForeground(new Color(0x273755));
             bulletLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
             offeringsList.add(bulletLabel);

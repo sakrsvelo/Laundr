@@ -19,8 +19,8 @@ public class reviewSectionBuilder {
         reviewsLabelPanel.setPreferredSize(new Dimension(0, 50));
 
         JLabel reviewsLabel = new JLabel("Reviews:");
-        reviewsLabel.setFont(new Font("Fredoka", Font.BOLD, 20));
-        reviewsLabel.setForeground(new Color(0x273755));
+        reviewsLabel.setFont(UIManager.getFont("Heading.font"));
+        reviewsLabel.setForeground(UIManager.getColor("foreground"));
 
         reviewsLabelPanel.add(reviewsLabel, BorderLayout.WEST);
 
@@ -37,7 +37,7 @@ public class reviewSectionBuilder {
                     users.get(i),
                     reviews.get(i),
                     userIcon,
-                    new Color(0x273755),
+                    UIManager.getColor("foreground"),
                     35,
                     true
             );
