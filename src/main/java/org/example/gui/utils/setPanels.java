@@ -21,8 +21,8 @@ public class setPanels {
         panel.setPreferredSize(dim);
 
         JLabel label = new JLabel(title, icon, SwingConstants.CENTER);
-        label.setFont(UIManager.getFont("Title.font"));
-        label.setForeground(UIManager.getColor("accentColor"));
+        label.setFont(UIManager.getFont("Heading.font"));
+        label.setForeground(UIManager.getColor("foreground"));
         label.setHorizontalTextPosition(SwingConstants.CENTER); //text centered horizontally
         label.setVerticalTextPosition(SwingConstants.BOTTOM);    //text below icon
         label.setIconTextGap(20);
@@ -37,7 +37,7 @@ public class setPanels {
         panel.setOpaque(false);
 
         if (addBottomBorder) {
-            panel.setBorder(BorderFactory.createMatteBorder(0, 0, 3, 0, UIManager.getColor("accentColor")));
+            panel.setBorder(BorderFactory.createMatteBorder(0, 0, 3, 0, UIManager.getColor("listBorder")));
         }
 
         JLabel userLabel = new JLabel(userName, userIcon, SwingConstants.LEFT);

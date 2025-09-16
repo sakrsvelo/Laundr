@@ -14,7 +14,7 @@ public class laundromatListBuilder {
         laundryList.setPreferredSize(new Dimension(440, 720));
         laundryList.setLayout(new BoxLayout(laundryList, BoxLayout.Y_AXIS));
 
-        JPanel laundry1 = laundromatPanels.createLaundryPanel("Real Laundromat Place", "1.2 kilometers away", "2~4 days", "Pictures/laundromat1.svg");
+        JPanel laundry1 = laundromatPanels.createLaundryPanel("Real Laundromat", "1.2 kilometers away", "2~4 days", "Pictures/laundromat1.svg");
         JPanel laundry2 = laundromatPanels.createLaundryPanel("Existing Laundromat", "850 meters away", "1~2 days", "Pictures/laundromat2.svg");
         JPanel laundry3 = laundromatPanels.createLaundryPanel("Actual Laundromat", "2.5 kilometers away", "3~5 days", "Pictures/laundromat3.svg");
 

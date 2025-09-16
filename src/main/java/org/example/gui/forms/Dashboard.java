@@ -22,7 +22,7 @@ public class Dashboard extends JPanel {
 
         //=========== LAUNDRY DETAILS ==========
         JPanel laundryDetails = new detailsBuilder()
-                .setName("Real Laundromat Place")
+                .setName("Real Laundromat")
                 .setAddress("456 Clean St., Davao City")
                 .setDistance("1.2 kilometers away")
                 .setDeliveryTime("2~4 days")

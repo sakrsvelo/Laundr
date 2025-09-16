@@ -125,7 +125,7 @@ public class detailsBuilder {
         for (String offering : offerings) {
             JLabel bulletLabel = new JLabel("• " + offering);
             bulletLabel.setFont(UIManager.getFont("defaultFont"));
-            bulletLabel.setForeground(new Color(0x273755));
+            bulletLabel.setForeground(UIManager.getColor("foreground"));
             bulletLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
             offeringsList.add(bulletLabel);
             offeringsList.add(Box.createVerticalStrut(10));

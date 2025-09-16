@@ -34,7 +34,7 @@ public class serviceBuilder {
                 "Wash and Fold",
                 washIcon,
                 BorderFactory.createLineBorder(UIManager.getColor("listBorder"), 2, true),
-                Color.WHITE,
+                UIManager.getColor("background"),
                 new Dimension(150, 70)
         );
 
@@ -42,7 +42,7 @@ public class serviceBuilder {
                 "Dry Clean",
                 dryIcon,
                 BorderFactory.createLineBorder(UIManager.getColor("listBorder"), 2, true),
-                Color.WHITE,
+                UIManager.getColor("background"),
                 new Dimension(150, 70)
         );
 
@@ -50,7 +50,7 @@ public class serviceBuilder {
                 "Iron",
                 ironIcon,
                 BorderFactory.createLineBorder(UIManager.getColor("listBorder"), 2, true),
-                Color.WHITE,
+                UIManager.getColor("background"),
                 new Dimension(150, 70)
         );
 
