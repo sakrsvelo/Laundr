@@ -63,7 +63,7 @@ public class detailsBuilder {
     public JPanel build() {
         JPanel laundryDetails = new JPanel(new BorderLayout(0, 5));
         laundryDetails.setBackground(bgColor);
-        laundryDetails.setBorder(BorderFactory.createLineBorder(new Color(0x31A4E5), 3, true));
+        laundryDetails.setBorder(BorderFactory.createLineBorder(UIManager.getColor("listBorder"), 3, true));
         laundryDetails.setPreferredSize(new Dimension(width, height));
 
         //================ Overview ==================
@@ -85,7 +85,7 @@ public class detailsBuilder {
         detailsCenter.setPreferredSize(new Dimension(width - 40, height));
         detailsCenter.setOpaque(false);
         detailsCenter.setBorder(BorderFactory.createCompoundBorder(
-                        BorderFactory.createMatteBorder(2, 0, 0, 0, new Color(0x31A4E5)),
+                        BorderFactory.createMatteBorder(2, 0, 0, 0, UIManager.getColor("listBorder")),
                         BorderFactory.createEmptyBorder(0, 20, 20, 20)
                 ));
 
@@ -111,7 +111,7 @@ public class detailsBuilder {
         offeringsList.setLayout(new BoxLayout(offeringsList, BoxLayout.Y_AXIS));
         offeringsList.setOpaque(false);
         offeringsList.setBorder(BorderFactory.createCompoundBorder(
-                        BorderFactory.createMatteBorder(2, 2, 2, 2, new Color(0x31A4E5)),
+                        BorderFactory.createMatteBorder(2, 2, 2, 2, UIManager.getColor("listBorder")),
                         BorderFactory.createEmptyBorder(20, 20, 20, 20)
                 ));
 
@@ -159,12 +159,12 @@ public class detailsBuilder {
         JPanel reviewsSection = reviewSectionBuilder.buildReviewsSection(users, reviews, userIcon);
 
         JPanel nextButton = new JPanel(new BorderLayout());
-        nextButton.setBackground(new Color(0x31A4E5));
-        nextButton.setPreferredSize(new Dimension(0, 50));
+        nextButton.setBackground(UIManager.getColor("Button.background"));
+        nextButton.setPreferredSize(new Dimension(Integer.MAX_VALUE, 50));
 
         JLabel reqPickup = new JLabel("Request Pickup");
-        reqPickup.setFont(new Font("Fredoka", Font.BOLD, 20));
-        reqPickup.setForeground(new Color(0xF8FBFD));
+        reqPickup.setFont(UIManager.getFont("Title.font"));
+        reqPickup.setForeground(UIManager.getColor("Button.foreground"));
         reqPickup.setHorizontalTextPosition(SwingConstants.CENTER);
         reqPickup.setVerticalTextPosition(SwingConstants.CENTER);
         reqPickup.setHorizontalAlignment(SwingConstants.CENTER);

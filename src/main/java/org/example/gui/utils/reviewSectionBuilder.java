@@ -28,7 +28,7 @@ public class reviewSectionBuilder {
         reviewsPanel.setLayout(new BoxLayout(reviewsPanel, BoxLayout.Y_AXIS));
         reviewsPanel.setOpaque(false);
         reviewsPanel.setBorder(BorderFactory.createCompoundBorder(
-                        BorderFactory.createMatteBorder(2, 2, 2, 2, new Color(0x31A4E5)),
+                        BorderFactory.createMatteBorder(2, 2, 2, 2, UIManager.getColor("listBorder")),
                         BorderFactory.createEmptyBorder(0, 0, 0, 0)
                 ));
 

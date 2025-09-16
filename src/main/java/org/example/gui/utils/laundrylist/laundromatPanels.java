@@ -31,7 +31,7 @@ public class laundromatPanels {
         namePanel.setPreferredSize(new Dimension(200, 30));
         namePanel.setBorder(
                 BorderFactory.createCompoundBorder(
-                        BorderFactory.createMatteBorder(2, 0, 0, 2, UIManager.getColor("listBorder")),
+                        BorderFactory.createMatteBorder(0, 0, 0, 2, UIManager.getColor("listBorder")),
                         BorderFactory.createEmptyBorder(0, 20, 0, 0)
                 ));
 
@@ -78,7 +78,7 @@ public class laundromatPanels {
         laundryPanel.add(south, BorderLayout.SOUTH);
 
         setPanels.laundryPanels(
-                BorderFactory.createLineBorder(UIManager.getColor("accentColor"), 2, true),
+                BorderFactory.createLineBorder(UIManager.getColor("listBorder"), 2, true),
                 UIManager.getColor("background"),
                 new Dimension(400, 230),
                 laundryPanel

@@ -33,7 +33,7 @@ public class serviceBuilder {
         JPanel wash = setPanels.servicePanel(
                 "Wash and Fold",
                 washIcon,
-                BorderFactory.createLineBorder(new Color(0x31A4E5), 2, true),
+                BorderFactory.createLineBorder(UIManager.getColor("listBorder"), 2, true),
                 Color.WHITE,
                 new Dimension(150, 70)
         );
@@ -41,7 +41,7 @@ public class serviceBuilder {
         JPanel dry = setPanels.servicePanel(
                 "Dry Clean",
                 dryIcon,
-                BorderFactory.createLineBorder(new Color(0x31A4E5), 2, true),
+                BorderFactory.createLineBorder(UIManager.getColor("listBorder"), 2, true),
                 Color.WHITE,
                 new Dimension(150, 70)
         );
@@ -49,7 +49,7 @@ public class serviceBuilder {
         JPanel iron = setPanels.servicePanel(
                 "Iron",
                 ironIcon,
-                BorderFactory.createLineBorder(new Color(0x31A4E5), 2, true),
+                BorderFactory.createLineBorder(UIManager.getColor("listBorder"), 2, true),
                 Color.WHITE,
                 new Dimension(150, 70)
         );
