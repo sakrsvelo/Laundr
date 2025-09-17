@@ -56,10 +56,10 @@ public class themeToggleButton extends JButton {
 
     public void updateAppearance() {
         if (FlatLaf.isLafDark()) {
-            setIcon(new FlatSVGIcon("icons/sun.svg", 22, 22));
+            setIcon(new FlatSVGIcon("icons/sun.svg", 21, 21));
             setBackground(new Color(0x1D2D4C));
         } else {
-            setIcon(new FlatSVGIcon("icons/moon.svg", 22, 22));
+            setIcon(new FlatSVGIcon("icons/moon.svg", 21, 21));
             setBackground(new Color(0x31A4E5));
         }
         repaint();
