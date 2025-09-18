@@ -3,6 +3,7 @@ package org.example;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.FlatLaf;
+import com.formdev.flatlaf.extras.FlatSVGIcon;
 import org.example.gui.forms.Login;
 import org.example.gui.forms.Register;
 import org.example.gui.utils.fontLoader;

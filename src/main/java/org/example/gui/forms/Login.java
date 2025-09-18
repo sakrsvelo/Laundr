@@ -68,8 +68,8 @@ public class Login extends JPanel {
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 0));
         buttonPanel.setOpaque(false);
 
-        loginBtn = new buttonCreator("Login", () -> Mainframe.showCard("LANDING"));
-        registerBtn = new buttonCreator("Register", () -> Mainframe.showCard("REGISTER"));
+        loginBtn = new buttonCreator("Login", "Button.font", () -> Mainframe.showCard("LANDING"));
+        registerBtn = new buttonCreator("Register", "Button.font", () -> Mainframe.showCard("REGISTER"));
         buttonPanel.add(loginBtn);
         buttonPanel.add(registerBtn);
 

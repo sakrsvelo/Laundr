@@ -2,6 +2,7 @@ package org.example.gui.forms;
 
 import javax.swing.*;
 
+import org.example.gui.utils.iconFactory;
 import org.example.gui.utils.laundromatOverview.detailsBuilder;
 import org.example.gui.utils.laundrylist.laundromatListBuilder;
 import org.example.gui.utils.setPanels;
@@ -12,10 +13,10 @@ import java.awt.*;
 public class Dashboard extends JPanel {
     public Dashboard (){
         //=========== ICONS ==========
-        Icon logo = new FlatSVGIcon("Icons/laundromatLogo.svg", 70, 70);
-        Icon addressIcon = new FlatSVGIcon("Icons/address.svg", 20, 20);
-        Icon distanceIcon = new FlatSVGIcon("Icons/distancefromUser.svg", 20, 20);
-        Icon deliveryIcon = new FlatSVGIcon("Icons/deliveryperiod.svg", 20, 20);
+        Icon logo = iconFactory.getIcon("Icons/laundromatLogo.svg", 70, 70);
+        Icon addressIcon = iconFactory.getIcon("Icons/address.svg", 20, 20);
+        Icon distanceIcon = iconFactory.getIcon("Icons/distancefromUser.svg", 20, 20);
+        Icon deliveryIcon = iconFactory.getIcon("Icons/deliveryperiod.svg", 20, 20);
 
         //=========== LAUNDRY LIST ==========
         JPanel laundryList = laundromatListBuilder.createLaundromatList();

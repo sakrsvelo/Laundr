@@ -3,16 +3,22 @@ package org.example.gui.utils;
 import javax.swing.*;
 import java.awt.*;
 
-public class buttonCreator extends JPanel {
+public class buttonCreator extends roundedPanel {
     private final JLabel label;
+    private final String fontKey;
 
-    public buttonCreator(String text, Runnable action) {
+    public buttonCreator(String text, String fontKey, Runnable action) {
+        this.fontKey = fontKey;
+
         setLayout(new GridBagLayout());
         setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         setOpaque(false);
-        setPreferredSize(new Dimension(150, 40));
 
-        label = new JLabel(text);
+        // Fixed height = 40, flexible width
+        setPreferredSize(new Dimension(150, 40));
+        setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
+
+        label = new JLabel(text, SwingConstants.CENTER);
         add(label);
 
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -58,7 +64,7 @@ public class buttonCreator extends JPanel {
         super.updateUI();
 
         if (label != null) {
-            Font f = UIManager.getFont("Button.font");
+            Font f = UIManager.getFont(fontKey); // Choose font by key
             if (f != null) label.setFont(f);
             Color fg = UIManager.getColor("Button.foreground");
             if (fg != null) label.setForeground(fg);
@@ -66,20 +72,5 @@ public class buttonCreator extends JPanel {
 
         Color bg = UIManager.getColor("Button.background");
         if (bg != null) setBackground(bg);
-        else setBackground(getBackground());
-    }
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        Graphics2D g2 = (Graphics2D) g.create();
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        Color fill = getBackground();
-        if (fill == null) fill = UIManager.getColor("Button.background");
-        g2.setColor(fill != null ? fill : new Color(0, 0, 0, 0));
-        int arc = UIManager.getInt("Button.arc");
-        if (arc <= 0) arc = 16;
-        g2.fillRoundRect(0, 0, getWidth(), getHeight(), arc, arc);
-        g2.dispose();
-        super.paintComponent(g);
     }
 }

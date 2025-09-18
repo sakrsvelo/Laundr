@@ -24,7 +24,7 @@ public class reviewSectionBuilder {
 
         reviewsLabelPanel.add(reviewsLabel, BorderLayout.WEST);
 
-        JPanel reviewsPanel = new JPanel();
+        roundedPanel reviewsPanel = new roundedPanel(16);
         reviewsPanel.setLayout(new BoxLayout(reviewsPanel, BoxLayout.Y_AXIS));
         reviewsPanel.setOpaque(false);
         reviewsPanel.setBorder(BorderFactory.createCompoundBorder(
@@ -51,4 +51,5 @@ public class reviewSectionBuilder {
 
         return laundromatReviews;
     }
+
 }

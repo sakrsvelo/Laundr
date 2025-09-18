@@ -39,7 +39,7 @@ public class Register extends JPanel {
         gbc.gridy++;
         gbc.gridwidth = 2;
         gbc.anchor = GridBagConstraints.CENTER;
-        registerBtn = new buttonCreator("Register", () -> Mainframe.showCard("LOGIN"));
+        registerBtn = new buttonCreator("Register", "Heading.font", () -> Mainframe.showCard("LOGIN"));
         formPanel.add(registerBtn, gbc);
 
         gbc.gridy++;

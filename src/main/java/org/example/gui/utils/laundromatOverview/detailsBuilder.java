@@ -1,5 +1,6 @@
 package org.example.gui.utils.laundromatOverview;
 
+import org.example.gui.utils.buttonCreator;
 import org.example.gui.utils.reviewSectionBuilder;
 
 import com.formdev.flatlaf.extras.FlatSVGIcon;
@@ -158,18 +159,13 @@ public class detailsBuilder {
 
         JPanel reviewsSection = reviewSectionBuilder.buildReviewsSection(users, reviews, userIcon);
 
-        JPanel nextButton = new JPanel(new BorderLayout());
-        nextButton.setBackground(UIManager.getColor("Button.background"));
+        buttonCreator nextButton = new buttonCreator("Request Pickup", "Title.font", () -> {
+            //should open to new frame maybe?
+            System.out.println("Pickup requested!");
+        });
+
+        nextButton.getComponent(0).setFont(UIManager.getFont("Title.font"));
         nextButton.setPreferredSize(new Dimension(Integer.MAX_VALUE, 50));
-
-        JLabel reqPickup = new JLabel("Request Pickup");
-        reqPickup.setFont(UIManager.getFont("Title.font"));
-        reqPickup.setForeground(UIManager.getColor("Button.foreground"));
-        reqPickup.setHorizontalTextPosition(SwingConstants.CENTER);
-        reqPickup.setVerticalTextPosition(SwingConstants.CENTER);
-        reqPickup.setHorizontalAlignment(SwingConstants.CENTER);
-
-        nextButton.add(reqPickup, BorderLayout.CENTER);
 
         detailsEast.add(reviewsSection, BorderLayout.NORTH);
         detailsEast.add(nextButton, BorderLayout.SOUTH);
