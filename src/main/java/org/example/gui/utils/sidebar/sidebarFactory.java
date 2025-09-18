@@ -1,8 +1,8 @@
 package org.example.gui.utils.sidebar;
 
-import org.example.Landing;
+import org.example.gui.panels.Landing;
 import org.example.Mainframe;
-import org.example.gui.utils.iconFactory;
+import org.example.gui.utils.creators.iconCreator;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,17 +24,23 @@ public class sidebarFactory extends JPanel {
         topPanel.add(Box.createVerticalStrut(BUTTON_SPACING));
 
         topPanel.add(new sidebarButtons("Home",
-                iconFactory.getIcon("Icons/home.svg", 24, 24),
+                iconCreator.getIcon("Icons/home.svg", 24, 24),
                 () -> landing.showCard("DASHBOARD")));
         topPanel.add(Box.createVerticalStrut(BUTTON_SPACING));
 
+
+        topPanel.add(new sidebarButtons("Laundromats",
+                iconCreator.getIcon("Icons/laundromats.svg", 24, 24),
+                () -> landing.showCard("LAUNDROMATS")));
+        topPanel.add(Box.createVerticalStrut(BUTTON_SPACING));
+
         topPanel.add(new sidebarButtons("Profile",
-                iconFactory.getIcon("Icons/userIcon.svg", 24, 24),
+                iconCreator.getIcon("Icons/userIcon.svg", 24, 24),
                 () -> landing.showCard("PROFILE")));
         topPanel.add(Box.createVerticalStrut(BUTTON_SPACING));
 
         topPanel.add(new sidebarButtons("Orders",
-                iconFactory.getIcon("Icons/orders.svg", 24, 24),
+                iconCreator.getIcon("Icons/order.svg", 24, 24),
                 () -> landing.showCard("ORDERS")));
 
         JPanel bottomPanel = new JPanel();
@@ -44,7 +50,7 @@ public class sidebarFactory extends JPanel {
         bottomPanel.add(Box.createVerticalGlue());
 
         bottomPanel.add(new sidebarButtons("Logout",
-                iconFactory.getIcon("Icons/logout.svg", 24, 24),
+                iconCreator.getIcon("Icons/logout.svg", 24, 24),
                 () -> Mainframe.showCard("LOGIN")));
 
         bottomPanel.add(Box.createVerticalStrut(BUTTON_SPACING-5));

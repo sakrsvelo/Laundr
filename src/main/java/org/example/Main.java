@@ -1,7 +1,7 @@
 package org.example;
 
 import com.formdev.flatlaf.FlatLightLaf;
-import org.example.gui.utils.fontLoader;
+import org.example.gui.utils.fonts.fontLoader;
 import javax.swing.*;
 
 public class Main {

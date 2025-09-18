@@ -3,10 +3,10 @@ package org.example;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.FlatLaf;
-import com.formdev.flatlaf.extras.FlatSVGIcon;
-import org.example.gui.forms.Login;
-import org.example.gui.forms.Register;
-import org.example.gui.utils.fontLoader;
+import org.example.gui.panels.Landing;
+import org.example.gui.panels.Login;
+import org.example.gui.panels.Register;
+import org.example.gui.utils.fonts.fontLoader;
 
 import javax.swing.*;
 import java.awt.*;
@@ -43,7 +43,11 @@ public class Mainframe extends JFrame {
         setResizable(true);
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setSize(screenSize.width * 3 / 4, screenSize.height * 5 / 6);
+
+        int width = screenSize.width * 9/10;
+        int height = screenSize.height * 8/9;
+
+        this.setSize(width, height);
         setLocationRelativeTo(null);
     }
 
@@ -79,12 +83,15 @@ public class Mainframe extends JFrame {
             fontLoader.loadFonts();
 
             UIManager.put("defaultFont", new Font("Lato Regular", Font.PLAIN, 16));
-            UIManager.put("Title.font", new Font("Fredoka Bold", Font.BOLD, 30));
+            UIManager.put("Title.font", new Font("Fredoka Bold", Font.BOLD, 36));
             UIManager.put("Button.font", new Font("Lato Bold", Font.BOLD, 15));
 
             UIManager.put("headerColor", dark ? new Color(0xF8FBFD) : new Color(0x31A4E5));
             UIManager.put("Button.foreground", new Color(0xF8FBFD));
             UIManager.put("Label.foreground", dark ? new Color(0xF8FBFD) : new Color(0x273755));
+
+            UIManager.put("Heading.foreground", new Color (0xF8FBFD));
+            UIManager.put("dashboardUser.foreground", new Color(0xDAEC73));
 
             SwingUtilities.updateComponentTreeUI(this);
             revalidate();
