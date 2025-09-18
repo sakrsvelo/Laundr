@@ -1,6 +1,6 @@
 package org.example.gui.panels;
 
-import org.example.Mainframe;
+import org.example.gui.Mainframe;
 import org.example.gui.utils.creators.buttonCreator;
 import org.example.gui.utils.creators.iconCreator;
 import org.example.gui.utils.creators.themeToggleButton;

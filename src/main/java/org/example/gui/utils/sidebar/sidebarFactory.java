@@ -1,7 +1,7 @@
 package org.example.gui.utils.sidebar;
 
 import org.example.gui.panels.Landing;
-import org.example.Mainframe;
+import org.example.gui.Mainframe;
 import org.example.gui.utils.creators.iconCreator;
 
 import javax.swing.*;

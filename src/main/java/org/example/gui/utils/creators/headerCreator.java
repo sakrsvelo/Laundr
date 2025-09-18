@@ -3,7 +3,7 @@ package org.example.gui.utils.creators;
 import javax.swing.*;
 import java.awt.*;
 
-import org.example.Mainframe;
+import org.example.gui.Mainframe;
 
 public class headerCreator extends JPanel {
     private final Mainframe frame;
