@@ -27,7 +27,7 @@ public class Dashboard extends JPanel {
         JPanel mainWrapper = new JPanel();
         mainWrapper.setOpaque(false);
         mainWrapper.setLayout(new BoxLayout(mainWrapper, BoxLayout.Y_AXIS));
-        mainWrapper.setBorder(BorderFactory.createEmptyBorder(TOP_MARGIN, SIDE_MARGIN, 20, SIDE_MARGIN));
+        mainWrapper.setBorder(BorderFactory.createEmptyBorder(TOP_MARGIN, SIDE_MARGIN, 40, SIDE_MARGIN));
 
         welcomeCard = new welcomeCard("John Doe");
         welcomeCard.setAlignmentX(Component.CENTER_ALIGNMENT);
