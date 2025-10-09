@@ -33,6 +33,7 @@ public class fontManager {
         return UIManager.getColor("foreground");
 
     }
+
     public static Color h4Color() {
         return UIManager.getColor("Button.foreground");
     }
