@@ -23,13 +23,11 @@ public class Profile extends JPanel {
 //        topPanel.setAlignmentX(Component.RIGHT_ALIGNMENT);
         topPanel.setOpaque(false);
 
-        // Profile picture placeholder
         roundedPanel profilePic = new roundedPanel(40);
         profilePic.setPreferredSize(new Dimension(80, 80));
         profilePic.setMaximumSize(new Dimension(80, 80));
         profilePic.setBackground(new Color(220, 220, 220));
 
-        // User info
         JPanel userPanel = new JPanel();
         userPanel.setLayout(new BoxLayout(userPanel, BoxLayout.Y_AXIS));
         userPanel.setOpaque(false);
