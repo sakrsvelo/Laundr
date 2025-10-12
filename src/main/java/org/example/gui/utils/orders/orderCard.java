@@ -98,10 +98,10 @@ public class orderCard extends JPanel {
             System.out.println("Order Status clicked for " + orderId);
         });
 
-        detailsBtn.setMaximumSize(new Dimension(130, 35));
-        statusBtn.setMaximumSize(new Dimension(130, 35));
+        detailsBtn.setMaximumSize(new Dimension(130, 60));
+        statusBtn.setMaximumSize(new Dimension(130, 60));
 
-        rightPanel.add(Box.createVerticalStrut(10));
+        rightPanel.add(Box.createVerticalStrut(5));
         rightPanel.add(detailsBtn);
         rightPanel.add(Box.createVerticalStrut(10));
         rightPanel.add(statusBtn);

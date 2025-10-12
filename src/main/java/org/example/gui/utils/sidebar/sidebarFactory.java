@@ -40,7 +40,7 @@ public class sidebarFactory extends JPanel {
         topPanel.add(Box.createVerticalStrut(BUTTON_SPACING));
 
         topPanel.add(new sidebarButtons("Orders",
-                iconCreator.getIcon("Icons/order.svg", 24, 24),
+                iconCreator.getIcon("Icons/darkmode/order.svg", 24, 24),
                 () -> landing.showCard("ORDERS")));
 
         JPanel bottomPanel = new JPanel();

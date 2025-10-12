@@ -35,7 +35,7 @@ public class Register extends JPanel {
         logoLabel = new JLabel();
         logoLabel.setHorizontalAlignment(SwingConstants.CENTER);
         logoLabel.setIcon(iconCreator.getIcon(
-                frame.isDarkMode() ? "Icons/logoDarkMode.svg" : "Icons/logo.svg",
+                frame.isDarkMode() ? "Icons/logos/logoDarkMode.svg" : "Icons/logos/logo.svg",
                 150, 100
         ));
         formPanel.add(logoLabel, gbc);
@@ -75,7 +75,7 @@ public class Register extends JPanel {
 
         if (logoLabel != null) {
             logoLabel.setIcon(iconCreator.getIcon(
-                    frame.isDarkMode() ? "Icons/logoDarkMode.svg" : "Icons/logo.svg",
+                    frame.isDarkMode() ? "Icons/logos/logoDarkMode.svg" : "Icons/logos/logo.svg",
                     150, 100
             ));
         }

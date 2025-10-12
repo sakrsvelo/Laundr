@@ -18,7 +18,7 @@ public class headerCreator extends JPanel {
         JPanel leftPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 30, 0));
         leftPanel.setOpaque(false);
 
-        logoLabel = new JLabel(iconCreator.getIcon("Icons/logoWhite.svg", 70, 50));
+        logoLabel = new JLabel(iconCreator.getIcon("Icons/logos/logoWhite.svg", 70, 50));
         leftPanel.add(logoLabel);
 
         toggleBtn = new themeToggleButton(frame::toggleTheme);
@@ -47,7 +47,7 @@ public class headerCreator extends JPanel {
 
         if (logoLabel != null) {
             logoLabel.setIcon(iconCreator.getIcon(
-                    frame.isDarkMode() ? "Icons/logoDarkMode.svg" : "Icons/logoWhite.svg",
+                    frame.isDarkMode() ? "Icons/logos/logoDarkMode.svg" : "Icons/logos/logoWhite.svg",
                     70, 50
             ));
         }
