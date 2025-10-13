@@ -11,6 +11,7 @@ import java.awt.*;
 public class Profile extends JPanel {
     private JLabel nameLabel;
     private JLabel editProfileLabel;
+    private JLabel textLabel;
 
     public Profile() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -88,7 +89,8 @@ public class Profile extends JPanel {
         supportPanel.setBorder(new roundedBorder(20, new Color(200, 200, 200), 1));
 
         JLabel supportLabel = new JLabel("Support");
-        fontManager.applyHeading(supportLabel, 3);
+        supportLabel.setFont(UIManager.getFont("Profile.font"));
+        supportLabel.setForeground(UIManager.getColor("Profile.foreground"));
         supportLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         JPanel supportItems = new JPanel();
@@ -124,7 +126,7 @@ public class Profile extends JPanel {
         iconLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JLabel textLabel = new JLabel(text, SwingConstants.CENTER);
-        fontManager.applyHeading(textLabel, 4);
+        fontManager.applyHeading(textLabel, 6);
         textLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         panel.add(iconLabel);
@@ -139,6 +141,7 @@ public class Profile extends JPanel {
         super.updateUI();
         if (nameLabel != null) fontManager.applyHeading(nameLabel, 5);
         if (editProfileLabel != null) fontManager.applyHeading(editProfileLabel, 4);
+        if(textLabel != null) fontManager.applyHeading(textLabel, 6);
         repaint();
     }
 }
