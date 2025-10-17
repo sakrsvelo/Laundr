@@ -16,9 +16,9 @@ public class Profile extends JPanel {
         setBorder(BorderFactory.createEmptyBorder(40, 50, 20, 50));
 
         add(createTopSection());
-        add(Box.createVerticalStrut(50));
+        add(Box.createVerticalStrut(60));
         add(createMiddleSection());
-        add(Box.createVerticalStrut(30));
+        add(Box.createVerticalStrut(40));
         add(createBottomSection());
     }
 
