@@ -88,6 +88,17 @@ public class sidebarButtons extends roundedPanel {
         repaint();
     }
 
+    public static void setDefaultActive(sidebarButtons button) {
+        if (activeButton != null && activeButton != button) {
+            activeButton.setBackground(UIManager.getColor("Sidebarbtn.background"));
+            activeButton.repaint();
+        }
+        activeButton = button;
+        button.setBackground(UIManager.getColor("Button.pressedBackground"));
+        button.repaint();
+    }
+
+
     @Override
     public void updateUI() {
         super.updateUI();

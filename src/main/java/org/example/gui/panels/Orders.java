@@ -37,6 +37,15 @@ public class Orders extends JPanel {
         orderStateButton ongoingBtn = new orderStateButton("Ongoing", () -> showCard("ongoing"));
         orderStateButton completedBtn = new orderStateButton("Completed", () -> showCard("completed"));
 
+        SwingUtilities.invokeLater(() -> {
+            ongoingBtn.setBackground(UIManager.getColor("Sidebar.hoverBackground"));
+            try {
+                java.lang.reflect.Field f = orderStateButton.class.getDeclaredField("activeButton");
+                f.setAccessible(true);
+                f.set(null, ongoingBtn);
+            } catch (Exception ignored) {}
+        });
+
         orderState.add(Box.createHorizontalStrut(60));
         orderState.add(ongoingBtn);
         orderState.add(Box.createHorizontalStrut(20));
@@ -67,7 +76,6 @@ public class Orders extends JPanel {
         completedScroll.setBorder(BorderFactory.createEmptyBorder());
         completedScroll.getVerticalScrollBar().setUnitIncrement(16);
         completedScroll.getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));
-
 
         cardPanel.add(ongoingScroll, "ongoing");
         cardPanel.add(completedScroll, "completed");

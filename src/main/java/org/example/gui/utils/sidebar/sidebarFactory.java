@@ -23,25 +23,32 @@ public class sidebarFactory extends JPanel {
 
         topPanel.add(Box.createVerticalStrut(BUTTON_SPACING));
 
-        topPanel.add(new sidebarButtons("Home",
+        sidebarButtons homeBtn = new sidebarButtons("Home",
                 iconCreator.getIcon("Icons/home.svg", 24, 24),
-                () -> landing.showCard("DASHBOARD")));
-        topPanel.add(Box.createVerticalStrut(BUTTON_SPACING));
+                () -> landing.showCard("DASHBOARD"));
 
-
-        topPanel.add(new sidebarButtons("Laundromats",
+        sidebarButtons laundromatsBtn = new sidebarButtons("Laundromats",
                 iconCreator.getIcon("Icons/laundromats.svg", 24, 24),
-                () -> landing.showCard("LAUNDROMATS")));
-        topPanel.add(Box.createVerticalStrut(BUTTON_SPACING));
+                () -> landing.showCard("LAUNDROMATS"));
 
-        topPanel.add(new sidebarButtons("Profile",
+        sidebarButtons profileBtn = new sidebarButtons("Profile",
                 iconCreator.getIcon("Icons/userIcon.svg", 24, 24),
-                () -> landing.showCard("PROFILE")));
-        topPanel.add(Box.createVerticalStrut(BUTTON_SPACING));
+                () -> landing.showCard("PROFILE"));
 
-        topPanel.add(new sidebarButtons("Orders",
+        sidebarButtons ordersBtn = new sidebarButtons("Orders",
                 iconCreator.getIcon("Icons/darkmode/order.svg", 24, 24),
-                () -> landing.showCard("ORDERS")));
+                () -> landing.showCard("ORDERS"));
+
+        sidebarButtons.setDefaultActive(homeBtn);
+
+        topPanel.add(Box.createVerticalStrut(BUTTON_SPACING));
+        topPanel.add(homeBtn);
+        topPanel.add(Box.createVerticalStrut(BUTTON_SPACING));
+        topPanel.add(laundromatsBtn);
+        topPanel.add(Box.createVerticalStrut(BUTTON_SPACING));
+        topPanel.add(profileBtn);
+        topPanel.add(Box.createVerticalStrut(BUTTON_SPACING));
+        topPanel.add(ordersBtn);
 
         JPanel bottomPanel = new JPanel();
         bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.Y_AXIS));
