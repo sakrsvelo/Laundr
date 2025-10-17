@@ -1,147 +1,186 @@
 package org.example.gui.panels;
 
+import org.example.gui.utils.fonts.fontManager;
 import org.example.gui.utils.creators.iconCreator;
 import org.example.gui.utils.creators.roundedBorder;
 import org.example.gui.utils.creators.roundedPanel;
-import org.example.gui.utils.fonts.fontManager;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class Profile extends JPanel {
-    private JLabel nameLabel;
-    private JLabel editProfileLabel;
-    private JLabel textLabel;
 
     public Profile() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setOpaque(false);
-        setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
+        setBorder(BorderFactory.createEmptyBorder(40, 50, 20, 50));
 
-        // === TOP PANEL ===
+        add(createTopSection());
+        add(Box.createVerticalStrut(50));
+        add(createMiddleSection());
+        add(Box.createVerticalStrut(30));
+        add(createBottomSection());
+    }
+
+    //top
+    private JPanel createTopSection() {
         JPanel topPanel = new JPanel();
         topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.X_AXIS));
-//        topPanel.setAlignmentX(Component.RIGHT_ALIGNMENT);
         topPanel.setOpaque(false);
 
-        roundedPanel profilePic = new roundedPanel(40);
-        profilePic.setPreferredSize(new Dimension(80, 80));
-        profilePic.setMaximumSize(new Dimension(80, 80));
-        profilePic.setBackground(new Color(220, 220, 220));
+        ImageIcon im = new ImageIcon(getClass().getResource("/Pictures/profile pictures/pfp1.png"));
+        Image img = im.getImage().getScaledInstance(90, 90, Image.SCALE_SMOOTH);
+        JLabel profilePic = new JLabel(new ImageIcon(img));
+        profilePic.setPreferredSize(new Dimension(90, 90));
+        profilePic.setMaximumSize(new Dimension(90, 90));
+        profilePic.setAlignmentY(Component.CENTER_ALIGNMENT);
 
-        JPanel userPanel = new JPanel();
-        userPanel.setLayout(new BoxLayout(userPanel, BoxLayout.Y_AXIS));
-        userPanel.setOpaque(false);
-        userPanel.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
+        JPanel namePanel = new JPanel();
+        namePanel.setLayout(new BoxLayout(namePanel, BoxLayout.Y_AXIS));
+        namePanel.setOpaque(false);
+        namePanel.setBorder(BorderFactory.createEmptyBorder(0, 15, 0, 0));
+        namePanel.setAlignmentY(Component.CENTER_ALIGNMENT);
 
-        nameLabel = new JLabel("John Doe");
+        JLabel nameLabel = new JLabel("John Doe");
         fontManager.applyHeading(nameLabel, 5);
+        nameLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        editProfileLabel = new JLabel("✏ Edit Profile");
-        fontManager.applyHeading(editProfileLabel, 3);
+        JLabel editProfileLabel = new JLabel("✏ Edit Profile");
+        fontManager.applyHeading(editProfileLabel, 6);
         editProfileLabel.setForeground(Color.DARK_GRAY);
+        editProfileLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        userPanel.add(nameLabel);
-        userPanel.add(editProfileLabel);
+        namePanel.add(nameLabel);
+        namePanel.add(Box.createVerticalStrut(6));
+        namePanel.add(editProfileLabel);
 
         topPanel.add(profilePic);
-        topPanel.add(Box.createHorizontalStrut(10));
-        topPanel.add(userPanel);
+        topPanel.add(namePanel);
 
-        // === MIDDLE PANEL ===
-        roundedPanel middlePanel = new roundedPanel(20);
-        middlePanel.setLayout(new BoxLayout(middlePanel, BoxLayout.X_AXIS));
+        return topPanel;
+    }
+
+    //mid
+    private JPanel createMiddleSection() {
+        roundedPanel middlePanel = new roundedPanel();
+        middlePanel.setLayout(new GridLayout(1, 4, 20, 0));
         middlePanel.setBackground(UIManager.getColor("Profile.background"));
-        middlePanel.setBorder(new roundedBorder(20, new Color(200, 200, 200), 1));
-        middlePanel.setOpaque(false);
-//        middlePanel.setAlignmentX(Component.LEFT_ALIGNMENT);
         middlePanel.setBorder(BorderFactory.createCompoundBorder(
-                new roundedBorder(20, new Color(200, 200, 200), 1),
-                BorderFactory.createEmptyBorder(20, 20, 20, 20)
+                new roundedBorder(20, UIManager.getColor("listBorder"), 1),
+                BorderFactory.createEmptyBorder(40, 20, 20, 20)
         ));
 
         middlePanel.add(createIconLabelPanel("Icons/lightmode/order.svg", "Orders"));
-        middlePanel.add(Box.createHorizontalStrut(20));
         middlePanel.add(createIconLabelPanel("Icons/lightmode/wallet.svg", "Digital Wallet"));
-        middlePanel.add(Box.createHorizontalStrut(20));
         middlePanel.add(createIconLabelPanel("Icons/lightmode/toReceive.svg", "To Receive"));
-        middlePanel.add(Box.createHorizontalStrut(20));
         middlePanel.add(createIconLabelPanel("Icons/lightmode/rating.svg", "To Rate"));
 
-        // === BOTTOM PANEL ===
-        JPanel bottomPanel = new JPanel();
-        bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.X_AXIS));
-        bottomPanel.setOpaque(false);
-//        bottomPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
-        bottomPanel.setBorder(BorderFactory.createEmptyBorder(30, 0, 0, 0));
+        middlePanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 160));
 
-        // Saved Laundromats
-        roundedPanel savedPanel = new roundedPanel(20);
-        savedPanel.setLayout(new BoxLayout(savedPanel, BoxLayout.Y_AXIS));
-        savedPanel.setBackground(UIManager.getColor("Profile.background"));
-        savedPanel.setBorder(new roundedBorder(20, new Color(200, 200, 200), 1));
-        savedPanel.add(createIconLabelPanel("Icons/lightmode/bookmark.svg", "Saved Laundromats"));
-
-        // Support Section
-        roundedPanel supportPanel = new roundedPanel(20);
-        supportPanel.setLayout(new BoxLayout(supportPanel, BoxLayout.Y_AXIS));
-        supportPanel.setBackground(UIManager.getColor("Profile.background"));
-        supportPanel.setBorder(new roundedBorder(20, new Color(200, 200, 200), 1));
-
-        JLabel supportLabel = new JLabel("Support");
-        supportLabel.setFont(UIManager.getFont("Profile.font"));
-        supportLabel.setForeground(UIManager.getColor("Profile.foreground"));
-        supportLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-
-        JPanel supportItems = new JPanel();
-        supportItems.setLayout(new BoxLayout(supportItems, BoxLayout.Y_AXIS));
-        supportItems.setOpaque(false);
-        supportItems.add(createIconLabelPanel("Icons/lightmode/help.svg", "Help Center"));
-        supportItems.add(Box.createVerticalStrut(10));
-        supportItems.add(createIconLabelPanel("Icons/lightmode/info.svg", "About Laundr"));
-
-        supportPanel.add(supportLabel);
-        supportPanel.add(supportItems);
-
-        bottomPanel.add(savedPanel);
-        bottomPanel.add(Box.createHorizontalStrut(30));
-        bottomPanel.add(supportPanel);
-
-        // === ADD TO MAIN PANEL ===
-        add(topPanel);
-        add(Box.createVerticalStrut(20));
-        add(middlePanel);
-        add(Box.createVerticalStrut(20));
-        add(bottomPanel);
+        return middlePanel;
     }
 
+    //bottom
+    private JPanel createBottomSection() {
+        JPanel bottomPanel = new JPanel(new GridBagLayout());
+        bottomPanel.setOpaque(false);
+        bottomPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 200));
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.insets = new Insets(0, 0, 0, 30);
+        gbc.weightx = 0.2;
+        gbc.gridx = 0;
+        bottomPanel.add(createSavedPanel(), gbc);
+
+        gbc.weightx = 0.4;
+        gbc.gridx = 1;
+        gbc.insets = new Insets(0, 0, 0, 0);
+        bottomPanel.add(createSupportPanel(), gbc);
+
+        return bottomPanel;
+    }
+
+    //saved panel (the bottom left)
+    private roundedPanel createSavedPanel() {
+        roundedPanel savedPanel = new roundedPanel();
+        savedPanel.setLayout(new BoxLayout(savedPanel, BoxLayout.Y_AXIS));
+        savedPanel.setBackground(UIManager.getColor("Profile.background"));
+        savedPanel.setBorder(BorderFactory.createCompoundBorder(
+                new roundedBorder(20, UIManager.getColor("listBorder"), 1),
+                BorderFactory.createEmptyBorder(20, 20, 20, 20)
+        ));
+
+        savedPanel.add(Box.createVerticalGlue());
+        savedPanel.add(createIconLabelPanel("Icons/lightmode/bookmark.svg", "Saved Laundromats"));
+        savedPanel.add(Box.createVerticalStrut(10));
+        savedPanel.add(Box.createVerticalGlue());
+
+        return savedPanel;
+    }
+
+    //bottom right panel
+    private roundedPanel createSupportPanel() {
+        roundedPanel supportPanel = new roundedPanel();
+        supportPanel.setLayout(new BoxLayout(supportPanel, BoxLayout.Y_AXIS));
+        supportPanel.setBackground(UIManager.getColor("Profile.background"));
+        supportPanel.setBorder(BorderFactory.createCompoundBorder(
+                new roundedBorder(20, UIManager.getColor("listBorder"), 1),
+                BorderFactory.createEmptyBorder(20, 20, 20, 20)
+        ));
+
+        supportPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+        titlePanel.setOpaque(false);
+
+        JLabel supportTitle = new JLabel("Support");
+        fontManager.applyHeading(supportTitle, 6);
+        supportTitle.setAlignmentX(Component.LEFT_ALIGNMENT);
+        titlePanel.add(supportTitle);
+
+        supportPanel.add(titlePanel);
+        supportPanel.add(Box.createVerticalStrut(15));
+        supportPanel.add(createSupportItem("Icons/lightmode/help.svg", "Help Center"));
+        supportPanel.add(Box.createVerticalStrut(10));
+        supportPanel.add(createSupportItem("Icons/lightmode/info.svg", "About Laundr"));
+        supportPanel.add(Box.createVerticalGlue());
+
+        return supportPanel;
+    }
+
+    //helper for middle and bottom left icons
     private JPanel createIconLabelPanel(String iconPath, String text) {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setOpaque(false);
-        panel.setAlignmentY(Component.CENTER_ALIGNMENT);
-        panel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        JLabel iconLabel = new JLabel(iconCreator.getIcon(iconPath, 40, 40));
+        JLabel iconLabel = new JLabel(iconCreator.getIcon(iconPath, 45, 45));
         iconLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JLabel textLabel = new JLabel(text, SwingConstants.CENTER);
-        fontManager.applyHeading(textLabel, 6);
         textLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        fontManager.applyHeading(textLabel, 6);
 
         panel.add(iconLabel);
-        panel.add(Box.createVerticalStrut(8));
+        panel.add(Box.createVerticalStrut(5));
         panel.add(textLabel);
 
         return panel;
     }
 
-    @Override
-    public void updateUI() {
-        super.updateUI();
-        if (nameLabel != null) fontManager.applyHeading(nameLabel, 5);
-        if (editProfileLabel != null) fontManager.applyHeading(editProfileLabel, 4);
-        if(textLabel != null) fontManager.applyHeading(textLabel, 6);
-        repaint();
+    //support icons
+    private JPanel createSupportItem(String iconPath, String text) {
+        JPanel itemPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 0));
+        itemPanel.setOpaque(false);
+
+        JLabel iconLabel = new JLabel(iconCreator.getIcon(iconPath, 20, 20));
+        JLabel textLabel = new JLabel(text);
+        fontManager.applyHeading(textLabel, 6);
+
+        itemPanel.add(iconLabel);
+        itemPanel.add(textLabel);
+
+        return itemPanel;
     }
 }
