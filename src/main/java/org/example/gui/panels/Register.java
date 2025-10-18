@@ -2,95 +2,167 @@ package org.example.gui.panels;
 
 import org.example.gui.Mainframe;
 import org.example.gui.utils.creators.buttonCreator;
-import org.example.gui.utils.creators.iconCreator;
-import org.example.gui.utils.creators.themeToggleButton;
+import org.example.gui.utils.creators.roundedPanel;
+import org.example.gui.utils.creators.roundedBorder;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class Register extends JPanel {
     private final Mainframe frame;
-    private JLabel title;
-    private JPanel formPanel;
+
+    // UI components
+    private JLabel title, userLabel, emailLabel, phoneLabel, passLabel, confirmLabel;
+    private JTextField userField, emailField, phoneField;
+    private JPasswordField passField, confirmField;
     private buttonCreator registerBtn;
-    private JButton toggleThemeBtn;
-    private JLabel logoLabel;
+    private roundedPanel card;
 
     public Register(Mainframe frame) {
         this.frame = frame;
         setLayout(new GridBagLayout());
+        setBackground(UIManager.getColor("background"));
 
-        formPanel = new JPanel(new GridBagLayout());
-        formPanel.setBorder(BorderFactory.createEmptyBorder(30, 40, 30, 40));
-        formPanel.setOpaque(false);
+        // 🔹 White rounded panel (centered card)
+        card = new roundedPanel();
+        card.setLayout(new GridBagLayout());
+        card.setBackground(UIManager.getColor("Register.background"));
+        card.setBorder(new roundedBorder(30, UIManager.getColor("listBorder"), 0));
+        card.setPreferredSize(new Dimension(450, 520));
 
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(10, 10, 10, 10);
         gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.anchor = GridBagConstraints.NORTHWEST;
+        int row = 0;
 
-        gbc.gridx = 0;
-        gbc.gridy = 0;
+        // 🔹 Title — moved higher and added extra spacing below it
+        title = new JLabel("Register", SwingConstants.CENTER);
+        gbc.gridy = row++;
         gbc.gridwidth = 2;
-        gbc.anchor = GridBagConstraints.CENTER;
-        logoLabel = new JLabel();
-        logoLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        logoLabel.setIcon(iconCreator.getIcon(
-                frame.isDarkMode() ? "Icons/logos/logoDarkMode.svg" : "Icons/logos/logo.svg",
-                150, 100
-        ));
-        formPanel.add(logoLabel, gbc);
+        gbc.insets = new Insets(20, 0, 30, 0); // top, left, bottom, right (more bottom spacing)
+        card.add(title, gbc);
 
-        gbc.gridy++;
-        title = new JLabel("Register");
-        formPanel.add(title, gbc);
-
-        gbc.gridy++;
+        // Reset base insets for consistent spacing
+        gbc.insets = new Insets(5, 20, 5, 20);
         gbc.gridwidth = 2;
+        gbc.anchor = GridBagConstraints.WEST;
+
+        // --- Username ---
+        userLabel = new JLabel("Username");
+        gbc.gridy = row++;
+        gbc.insets = new Insets(0, 20, 2, 20); // small gap above text field
+        card.add(userLabel, gbc);
+
+        userField = new JTextField(20);
+        gbc.gridy = row++;
+        gbc.insets = new Insets(0, 20, 15, 20); // extra space after field
+        card.add(userField, gbc);
+
+        // --- Email ---
+        emailLabel = new JLabel("Email Address");
+        gbc.gridy = row++;
+        gbc.insets = new Insets(0, 20, 2, 20);
+        card.add(emailLabel, gbc);
+
+        emailField = new JTextField(20);
+        gbc.gridy = row++;
+        gbc.insets = new Insets(0, 20, 15, 20);
+        card.add(emailField, gbc);
+
+        // --- Phone ---
+        phoneLabel = new JLabel("Phone Number");
+        gbc.gridy = row++;
+        gbc.insets = new Insets(0, 20, 2, 20);
+        card.add(phoneLabel, gbc);
+
+        phoneField = new JTextField(20);
+        gbc.gridy = row++;
+        gbc.insets = new Insets(0, 20, 15, 20);
+        card.add(phoneField, gbc);
+
+        // --- Password ---
+        passLabel = new JLabel("Password");
+        gbc.gridy = row++;
+        gbc.insets = new Insets(0, 20, 2, 20);
+        card.add(passLabel, gbc);
+
+        passField = new JPasswordField(20);
+        gbc.gridy = row++;
+        gbc.insets = new Insets(0, 20, 15, 20);
+        card.add(passField, gbc);
+
+        // --- Confirm Password ---
+        confirmLabel = new JLabel("Confirm Password");
+        gbc.gridy = row++;
+        gbc.insets = new Insets(0, 20, 2, 20);
+        card.add(confirmLabel, gbc);
+
+        confirmField = new JPasswordField(20);
+        gbc.gridy = row++;
+        gbc.insets = new Insets(0, 20, 25, 20); // extra space before button
+        card.add(confirmField, gbc);
+
+        // --- Register button ---
+        registerBtn = new buttonCreator("Register", "Button.font", () -> frame.showCard("LOGIN"));
+        registerBtn.setPreferredSize(new Dimension(200, 40));
+        gbc.gridy = row++;
         gbc.anchor = GridBagConstraints.CENTER;
-        registerBtn = new buttonCreator("Register", "Heading3.font", () -> frame.showCard("LOGIN"));
-        formPanel.add(registerBtn, gbc);
+        gbc.insets = new Insets(10, 0, 20, 0);
+        card.add(registerBtn, gbc);
 
-        gbc.gridy++;
-        toggleThemeBtn = new themeToggleButton(frame::toggleTheme);
-        formPanel.add(toggleThemeBtn, gbc);
-
+        // 🔹 Add card to main panel
         GridBagConstraints outer = new GridBagConstraints();
         outer.gridx = 0;
         outer.gridy = 0;
-        outer.anchor = GridBagConstraints.NORTH;
-        outer.weightx = 1.0;
-        outer.weighty = 1.0;
-        outer.insets = new Insets(40, 0, 0, 0);
-        add(formPanel, outer);
+        outer.anchor = GridBagConstraints.CENTER;
+        add(card, outer);
 
-        updateUI();
+        applyStyles();
+    }
+
+    private void applyStyles() {
+        // Background colors
+        setBackground(UIManager.getColor("Register.background") != null
+                ? UIManager.getColor("Register.background")
+                : new Color(52, 152, 219));
+
+        card.setBackground(UIManager.getColor("Register.panel"));
+
+        // Title
+        title.setFont(UIManager.getFont("Title.font"));
+        title.setForeground(UIManager.getColor("headerColor"));
+
+        // Labels
+        JLabel[] labels = {userLabel, emailLabel, phoneLabel, passLabel, confirmLabel};
+        for (JLabel label : labels) {
+            label.setFont(UIManager.getFont("Button.font"));
+            label.setForeground(UIManager.getColor("Label.foreground"));
+        }
+
+        // Text fields
+        JTextField[] fields = {userField, emailField, phoneField};
+        for (JTextField field : fields) {
+            field.setFont(UIManager.getFont("defaultFont"));
+            field.setBorder(BorderFactory.createLineBorder(UIManager.getColor("listBorder"), 1));
+        }
+
+        // Password fields
+        JPasswordField[] passFields = {passField, confirmField};
+        for (JPasswordField pf : passFields) {
+            pf.setFont(UIManager.getFont("defaultFont"));
+            pf.setBorder(BorderFactory.createLineBorder(UIManager.getColor("listBorder"), 1));
+        }
+
+        // Button
+        registerBtn.setBackground(UIManager.getColor("Button.background"));
+        registerBtn.setForeground(UIManager.getColor("Button.foreground"));
     }
 
     @Override
     public void updateUI() {
         super.updateUI();
-
-        setBackground(UIManager.getColor("Panel.background"));
-        if (formPanel != null) formPanel.setBackground(UIManager.getColor("Panel.background"));
-
-        if (logoLabel != null) {
-            logoLabel.setIcon(iconCreator.getIcon(
-                    frame.isDarkMode() ? "Icons/logos/logoDarkMode.svg" : "Icons/logos/logo.svg",
-                    150, 100
-            ));
-        }
-
-        if (title != null) {
-            title.setFont(UIManager.getFont("Title.font"));
-            title.setForeground(UIManager.getColor("headerColor"));
-        }
-
-        if (registerBtn != null) registerBtn.updateUI();
-
-        if (toggleThemeBtn != null) {
-            toggleThemeBtn.setFont(UIManager.getFont("Button.font"));
-            Color fg = UIManager.getColor("Button.foreground");
-            if (fg != null) toggleThemeBtn.setForeground(fg);
+        if (card != null) {
+            SwingUtilities.invokeLater(this::applyStyles);
         }
     }
 }
