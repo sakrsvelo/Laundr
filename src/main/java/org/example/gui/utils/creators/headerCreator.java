@@ -71,7 +71,7 @@ public class headerCreator extends JPanel {
 
         leftPanel.add(burgerBtn);
 
-        logoLabel = new JLabel(iconCreator.getIcon("Icons/logoWhite.svg", 70, 50));
+        logoLabel = new JLabel(iconCreator.getIcon("Icons/logos/logoWhite.svg", 70, 50));
         leftPanel.add(logoLabel);
 
         themeToggleBtn = new themeToggleButton(frame::toggleTheme);
@@ -100,7 +100,7 @@ public class headerCreator extends JPanel {
 
         if (logoLabel != null) {
             logoLabel.setIcon(iconCreator.getIcon(
-                    frame.isDarkMode() ? "Icons/logoDarkMode.svg" : "Icons/logoWhite.svg",
+                    frame.isDarkMode() ? "Icons/logos/logoDarkMode.svg" : "Icons/logos/logoWhite.svg",
                     70, 50
             ));
         }

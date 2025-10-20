@@ -70,7 +70,7 @@ public class LaundromatDetailsPanel extends JPanel {
         leftmostPanel.setPreferredSize(new Dimension(80, 80)); // fixed-ish width to anchor logo
         leftmostPanel.setMinimumSize(new Dimension(70, 60));
 
-        logoLabel = new JLabel(iconCreator.getIcon("Icons/laundromatLogo.svg", 48, 48));
+        logoLabel = new JLabel(iconCreator.getIcon("Icons/lightmode/laundromatLogo.svg", 48, 48));
         // Add logo centered
         GridBagConstraints lg = new GridBagConstraints();
         lg.anchor = GridBagConstraints.CENTER;
@@ -208,7 +208,7 @@ public class LaundromatDetailsPanel extends JPanel {
 
         JPanel starRow = new JPanel(new FlowLayout(FlowLayout.RIGHT, 6, 0));
         starRow.setOpaque(false);
-        JLabel starIcon = new JLabel(iconCreator.getIcon("Icons/star.svg", 18, 18));
+        JLabel starIcon = new JLabel(iconCreator.getIcon("Icons/lightmode/star.svg", 18, 18));
         ratingLabel = new JLabel("0.0");
         ratingLabel.setFont(fredoka16);
         starRow.add(starIcon);
@@ -260,7 +260,7 @@ public class LaundromatDetailsPanel extends JPanel {
         // === PLACEHOLDER STATE (unchanged) ===
         placeholderWrapper = new JPanel(new GridBagLayout());
         placeholderWrapper.setOpaque(false);
-        placeholderIconLabel = new JLabel(iconCreator.getIcon("Icons/laundromatLogoGray.svg", 250, 250));
+        placeholderIconLabel = new JLabel(iconCreator.getIcon("Icons/darkmode/laundromatLogoDarkMode.svg", 250, 250));
         placeholderWrapper.add(placeholderIconLabel, new GridBagConstraints());
 
         // Start with placeholder only
@@ -297,7 +297,7 @@ public class LaundromatDetailsPanel extends JPanel {
         }
 
         // update fields
-        logoLabel.setIcon(iconCreator.getIcon("Icons/laundromatLogo.svg", 48, 48));
+        logoLabel.setIcon(iconCreator.getIcon("Icons/lightmode/laundromatLogo.svg", 48, 48));
         nameLabel.setText(data.name);
         addressArea.setText(data.address);
         distanceLabel.setText(data.distance);
@@ -314,9 +314,9 @@ public class LaundromatDetailsPanel extends JPanel {
         ).forEach(reviewsPanel::add);
 
         servicesPanel.removeAll();
-        servicesPanel.add(new ServiceCard("Wash & Fold", "Icons/washandFold.svg"));
-        servicesPanel.add(new ServiceCard("Dry Clean", "Icons/dryClean.svg"));
-        servicesPanel.add(new ServiceCard("Ironing", "Icons/iron.svg"));
+        servicesPanel.add(new ServiceCard("Wash & Fold", "Icons/Services/washandFold.svg"));
+        servicesPanel.add(new ServiceCard("Dry Clean", "Icons/Services/dryClean.svg"));
+        servicesPanel.add(new ServiceCard("Ironing", "Icons/Services/iron.svg"));
 
         revalidate();
         repaint();
@@ -329,7 +329,7 @@ public class LaundromatDetailsPanel extends JPanel {
 
         // refresh placeholder icon (theme changes)
         if (placeholderIconLabel != null) {
-            placeholderIconLabel.setIcon(iconCreator.getIcon("Icons/laundromatLogoGray.svg", 250, 250));
+            placeholderIconLabel.setIcon(iconCreator.getIcon("Icons/darkmode/laundromatLogoDarkMode.svg", 250, 250));
         }
 
         // keep fonts in sync with theme if UIManager supplies them
