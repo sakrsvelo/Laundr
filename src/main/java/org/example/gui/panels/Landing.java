@@ -18,7 +18,8 @@ public class Landing extends JPanel {
         setLayout(new BorderLayout());
         setBackground(UIManager.getColor("Panel.background"));
 
-        header = new headerCreator(frame);
+        // pass a callback that toggles the sidebar
+        header = new headerCreator(frame, this::toggleSidebar);
         add(header, BorderLayout.NORTH);
 
         centerLayout = new CardLayout();
@@ -39,8 +40,18 @@ public class Landing extends JPanel {
     }
 
     public void showCard(String name) {
-
         centerLayout.show(centerPanel, name);
+    }
+
+    /**
+     * Called by header's burger button.
+     */
+    public void toggleSidebar() {
+        if (sidebar != null) {
+            sidebar.toggle();
+            revalidate();
+            repaint();
+        }
     }
 
     @Override

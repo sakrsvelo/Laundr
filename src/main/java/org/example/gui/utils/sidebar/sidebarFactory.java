@@ -7,48 +7,50 @@ import org.example.gui.utils.creators.iconCreator;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Sidebar that can be shown/hidden completely while retaining a fixed width.
+ * Buttons are intentionally narrower than the sidebar and centered.
+ */
 public class sidebarFactory extends JPanel {
 
-    private static final int BUTTON_SPACING = 15;
+    // Keep a stable sidebar width (restore original UI width)
+    private static final int SIDEBAR_WIDTH = 200;
+    private boolean collapsed = false;
 
     public sidebarFactory(Landing landing) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setPreferredSize(new Dimension(200, Integer.MAX_VALUE));
         setOpaque(true);
         setBackground(UIManager.getColor("Menu.background"));
+
+        // Make the sidebar keep its width when visible
+        setPreferredSize(new Dimension(SIDEBAR_WIDTH, Integer.MAX_VALUE));
+        setMaximumSize(new Dimension(SIDEBAR_WIDTH, Integer.MAX_VALUE));
+        setMinimumSize(new Dimension(SIDEBAR_WIDTH, 0));
 
         JPanel topPanel = new JPanel();
         topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
         topPanel.setOpaque(false);
 
-        topPanel.add(Box.createVerticalStrut(BUTTON_SPACING));
+        topPanel.add(Box.createVerticalStrut(15));
 
-        sidebarButtons homeBtn = new sidebarButtons("Home",
+        topPanel.add(new sidebarButtons("Home",
                 iconCreator.getIcon("Icons/home.svg", 24, 24),
-                () -> landing.showCard("DASHBOARD"));
+                () -> landing.showCard("DASHBOARD")));
+        topPanel.add(Box.createVerticalStrut(15));
 
-        sidebarButtons laundromatsBtn = new sidebarButtons("Laundromats",
+        topPanel.add(new sidebarButtons("Laundromats",
                 iconCreator.getIcon("Icons/laundromats.svg", 24, 24),
-                () -> landing.showCard("LAUNDROMATS"));
+                () -> landing.showCard("LAUNDROMATS")));
+        topPanel.add(Box.createVerticalStrut(15));
 
-        sidebarButtons profileBtn = new sidebarButtons("Profile",
+        topPanel.add(new sidebarButtons("Profile",
                 iconCreator.getIcon("Icons/userIcon.svg", 24, 24),
-                () -> landing.showCard("PROFILE"));
+                () -> landing.showCard("PROFILE")));
+        topPanel.add(Box.createVerticalStrut(15));
 
-        sidebarButtons ordersBtn = new sidebarButtons("Orders",
-                iconCreator.getIcon("Icons/darkmode/order.svg", 24, 24),
-                () -> landing.showCard("ORDERS"));
-
-        sidebarButtons.setDefaultActive(homeBtn);
-
-        topPanel.add(Box.createVerticalStrut(BUTTON_SPACING));
-        topPanel.add(homeBtn);
-        topPanel.add(Box.createVerticalStrut(BUTTON_SPACING));
-        topPanel.add(laundromatsBtn);
-        topPanel.add(Box.createVerticalStrut(BUTTON_SPACING));
-        topPanel.add(profileBtn);
-        topPanel.add(Box.createVerticalStrut(BUTTON_SPACING));
-        topPanel.add(ordersBtn);
+        topPanel.add(new sidebarButtons("Orders",
+                iconCreator.getIcon("Icons/order.svg", 24, 24),
+                () -> landing.showCard("ORDERS")));
 
         JPanel bottomPanel = new JPanel();
         bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.Y_AXIS));
@@ -60,11 +62,30 @@ public class sidebarFactory extends JPanel {
                 iconCreator.getIcon("Icons/logout.svg", 24, 24),
                 () -> Mainframe.showCard("LOGIN")));
 
-        bottomPanel.add(Box.createVerticalStrut(BUTTON_SPACING-5));
+        bottomPanel.add(Box.createVerticalStrut(10));
 
         add(topPanel);
         add(Box.createVerticalGlue());
         add(bottomPanel);
+    }
+
+    /**
+     * Toggle collapse (hide/show).
+     */
+    public void toggle() {
+        setCollapsed(!collapsed);
+    }
+
+    public void setCollapsed(boolean collapsed) {
+        this.collapsed = collapsed;
+        // hide entirely when collapsed and restore preferred size when visible
+        setVisible(!collapsed);
+        revalidate();
+        repaint();
+    }
+
+    public boolean isCollapsed() {
+        return collapsed;
     }
 
     @Override
@@ -72,5 +93,8 @@ public class sidebarFactory extends JPanel {
         super.updateUI();
         setBackground(UIManager.getColor("Menu.background"));
         setForeground(UIManager.getColor("Menu.foreground"));
+        // Maintain preferred width on L&F change
+        setPreferredSize(new Dimension(SIDEBAR_WIDTH, Integer.MAX_VALUE));
+        setMaximumSize(new Dimension(SIDEBAR_WIDTH, Integer.MAX_VALUE));
     }
 }

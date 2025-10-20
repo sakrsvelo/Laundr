@@ -94,7 +94,7 @@ public class Profile extends JPanel {
         middlePanel.add(createIconLabelPanel("Icons/lightmode/bookmark.svg", "Saved Laundromats"));
         middlePanel.add(createIconLabelPanel("Icons/lightmode/wallet.svg", "Digital Wallet"));
         middlePanel.add(createIconLabelPanel("Icons/lightmode/toReceive.svg", "To Receive"));
-        middlePanel.add(createIconLabelPanel("Icons/lightmode/rating.svg", "To Rate"));
+        middlePanel.add(createIconLabelPanel("Icons/lightmode/star.svg", "To Rate"));
 
         middlePanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 160));
 

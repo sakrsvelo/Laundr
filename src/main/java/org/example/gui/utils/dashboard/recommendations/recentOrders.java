@@ -38,7 +38,11 @@ public class recentOrders extends roundedPanel {
         Object[][] data = {
                 {"001", "Real Laundromat", "Done"},
                 {"002", "Actual Laundromat", "Done"},
-                {"003", "Existing Laundromat", "Done"}
+                {"003", "Existing Laundromat", "Done"},
+                {"004", "Lorem Laundromat", "In Progress"},
+                {"005", "Ipsum Laundromat", "In Progress"},
+                {"006", "A Laundromat", "In Progress"},
+                {"007", "B Laundromat", "In Progress"}
         };
 
         table = new JTable(data, columns);
