@@ -93,8 +93,6 @@ public class Mainframe extends JFrame {
             UIManager.put("Heading.foreground", new Color (0xF8FBFD));
             UIManager.put("dashboardUser.foreground", new Color(0xDAEC73));
 
-//            UIManager.put("Profile.foreground", dark ? new Color(0xD9D9D9) : new Color(0x807676));
-
             SwingUtilities.updateComponentTreeUI(this);
             revalidate();
             repaint();

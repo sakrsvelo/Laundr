@@ -41,7 +41,7 @@ public class Login extends JPanel {
         logoLabel.setVerticalAlignment(SwingConstants.CENTER);
         logoLabel.setIcon(
                 iconCreator.getIcon(
-                        frame.isDarkMode() ? "Icons/logos/logoDarkMode.svg" : "Icons/logos/logo.svg",
+                        frame.isDarkMode() ? "Icons/logoDarkMode.svg" : "Icons/logo.svg",
                         150, 100
                 )
         );
