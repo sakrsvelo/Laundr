@@ -29,7 +29,7 @@ public class Dashboard extends JPanel {
         mainWrapper.setLayout(new BoxLayout(mainWrapper, BoxLayout.Y_AXIS));
         mainWrapper.setBorder(BorderFactory.createEmptyBorder(TOP_MARGIN, SIDE_MARGIN, 40, SIDE_MARGIN));
 
-        welcomeCard = new welcomeCard("John Doe");
+        welcomeCard = new welcomeCard("johndoe123");
         welcomeCard.setAlignmentX(Component.CENTER_ALIGNMENT);
         welcomeCard.setMaximumSize(new Dimension(Integer.MAX_VALUE, 180));
         mainWrapper.add(welcomeCard);

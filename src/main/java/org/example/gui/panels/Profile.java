@@ -43,7 +43,7 @@ public class Profile extends JPanel {
         namePanel.setBorder(BorderFactory.createEmptyBorder(0, 15, 0, 0));
         namePanel.setAlignmentY(Component.CENTER_ALIGNMENT);
 
-        JLabel nameLabel = new JLabel("John Doe");
+        JLabel nameLabel = new JLabel("johndoe123");
         fontManager.applyHeading(nameLabel, 5);
         nameLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 

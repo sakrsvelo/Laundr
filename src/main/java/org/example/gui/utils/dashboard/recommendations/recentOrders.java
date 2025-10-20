@@ -38,11 +38,7 @@ public class recentOrders extends roundedPanel {
         Object[][] data = {
                 {"001", "Real Laundromat", "Done"},
                 {"002", "Actual Laundromat", "Done"},
-                {"003", "Existing Laundromat", "Done"},
-                {"004", "Lorem Laundromat", "In Progress"},
-                {"005", "Ipsum Laundromat", "In Progress"},
-                {"006", "A Laundromat", "In Progress"},
-                {"007", "B Laundromat", "In Progress"}
+                {"003", "Existing Laundromat", "Done"}
         };
 
         table = new JTable(data, columns);
@@ -62,6 +58,7 @@ public class recentOrders extends roundedPanel {
         JPanel tableWrapper = new JPanel(new BorderLayout());
         tableWrapper.setBackground(UIManager.getColor("Panel.background"));
         tableWrapper.add(scrollPane, BorderLayout.CENTER);
+        tableWrapper.setMaximumSize(new Dimension(Integer.MAX_VALUE, 180));
 
         add(tableWrapper);
     }
