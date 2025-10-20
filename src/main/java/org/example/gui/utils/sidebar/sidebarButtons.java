@@ -5,9 +5,13 @@ import org.example.gui.utils.creators.roundedPanel;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Sidebar button with active-state handling.
+ * Buttons are intentionally narrower than the sidebar and centered.
+ */
 public class sidebarButtons extends roundedPanel {
     private final JLabel label;
-    private static final int BUTTON_WIDTH = 180;
+    private static final int BUTTON_WIDTH = 160; // < SIDEBAR_WIDTH
     private static final int BUTTON_HEIGHT = 40;
     private static sidebarButtons activeButton;
 
@@ -16,6 +20,7 @@ public class sidebarButtons extends roundedPanel {
         setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         setOpaque(false);
 
+        // Keep buttons smaller than sidebar: fixed preferred / max size
         setPreferredSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
         setMaximumSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
         setMinimumSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
@@ -73,7 +78,7 @@ public class sidebarButtons extends roundedPanel {
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.WEST;
         gbc.insets = new Insets(0, 12, 0, 0);
-        gbc.weightx = 1; // allows expansion
+        gbc.weightx = 1;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         add(lbl, gbc);
     }
@@ -87,17 +92,6 @@ public class sidebarButtons extends roundedPanel {
         setBackground(UIManager.getColor("Button.pressedBackground"));
         repaint();
     }
-
-    public static void setDefaultActive(sidebarButtons button) {
-        if (activeButton != null && activeButton != button) {
-            activeButton.setBackground(UIManager.getColor("Sidebarbtn.background"));
-            activeButton.repaint();
-        }
-        activeButton = button;
-        button.setBackground(UIManager.getColor("Button.pressedBackground"));
-        button.repaint();
-    }
-
 
     @Override
     public void updateUI() {
@@ -115,5 +109,10 @@ public class sidebarButtons extends roundedPanel {
             Color bg = UIManager.getColor("Sidebarbtn.background");
             if (bg != null) setBackground(bg);
         }
+
+        // Ensure width constraints are reapplied if L&F changes
+        setPreferredSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
+        setMaximumSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
+        setMinimumSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
     }
 }
