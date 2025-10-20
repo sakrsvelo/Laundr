@@ -7,6 +7,8 @@ import org.example.gui.utils.creators.roundedPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Profile extends JPanel {
 
@@ -50,6 +52,25 @@ public class Profile extends JPanel {
         editProfileLabel.setForeground(Color.DARK_GRAY);
         editProfileLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
+        editProfileLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+        editProfileLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println("click");
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                editProfileLabel.setForeground(new Color(30, 144, 255));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                editProfileLabel.setForeground(Color.DARK_GRAY);
+            }
+        });
+
         namePanel.add(nameLabel);
         namePanel.add(Box.createVerticalStrut(6));
         namePanel.add(editProfileLabel);
@@ -70,7 +91,7 @@ public class Profile extends JPanel {
                 BorderFactory.createEmptyBorder(40, 20, 20, 20)
         ));
 
-        middlePanel.add(createIconLabelPanel("Icons/lightmode/order.svg", "Orders"));
+        middlePanel.add(createIconLabelPanel("Icons/lightmode/bookmark.svg", "Saved Laundromats"));
         middlePanel.add(createIconLabelPanel("Icons/lightmode/wallet.svg", "Digital Wallet"));
         middlePanel.add(createIconLabelPanel("Icons/lightmode/toReceive.svg", "To Receive"));
         middlePanel.add(createIconLabelPanel("Icons/lightmode/rating.svg", "To Rate"));
@@ -82,21 +103,20 @@ public class Profile extends JPanel {
 
     //bottom
     private JPanel createBottomSection() {
-        JPanel bottomPanel = new JPanel(new GridBagLayout());
+        JPanel bottomPanel = new JPanel();
+        bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.X_AXIS));
         bottomPanel.setOpaque(false);
         bottomPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 200));
 
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.fill = GridBagConstraints.BOTH;
-        gbc.insets = new Insets(0, 0, 0, 30);
-        gbc.weightx = 0.2;
-        gbc.gridx = 0;
-        bottomPanel.add(createSavedPanel(), gbc);
+        roundedPanel supportPanel = createSupportPanel();
+        supportPanel.setPreferredSize(new Dimension(450, 160));
+        supportPanel.setMaximumSize(new Dimension(450, 160));
+        bottomPanel.add(supportPanel);
 
-        gbc.weightx = 0.4;
-        gbc.gridx = 1;
-        gbc.insets = new Insets(0, 0, 0, 0);
-        bottomPanel.add(createSupportPanel(), gbc);
+        JPanel fillerPanel = new JPanel();
+        fillerPanel.setOpaque(false);
+        bottomPanel.add(Box.createHorizontalGlue());
+        bottomPanel.add(fillerPanel);
 
         return bottomPanel;
     }
