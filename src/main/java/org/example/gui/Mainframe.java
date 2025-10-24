@@ -16,6 +16,7 @@ public class Mainframe extends JFrame {
     private static CardLayout cardLayout;
     private static JPanel mainPanel;
 
+
     public Mainframe() {
         fontLoader.loadFonts();
         loadTheme();

@@ -3,6 +3,7 @@ package org.example.gui.utils.sidebar;
 import org.example.gui.panels.Landing;
 import org.example.gui.Mainframe;
 import org.example.gui.utils.creators.iconCreator;
+import org.example.session.SessionManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -60,7 +61,11 @@ public class sidebarFactory extends JPanel {
 
         bottomPanel.add(new sidebarButtons("Logout",
                 iconCreator.getIcon("Icons/logout.svg", 24, 24),
-                () -> Mainframe.showCard("LOGIN")));
+                () -> {
+                    SessionManager.clearSession();
+
+                    Mainframe.showCard("LOGIN");
+                }));
 
         bottomPanel.add(Box.createVerticalStrut(10));
 
