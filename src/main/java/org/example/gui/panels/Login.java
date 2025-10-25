@@ -129,14 +129,11 @@ public class Login extends JPanel {
             boolean success = dao.validateLogin(username, password);
 
             if (success) {
-                Mainframe.setCurrentUsername(username);
-
                 JOptionPane.showMessageDialog(this,
                         "Login successful!",
                         "Success",
                         JOptionPane.INFORMATION_MESSAGE);
 
-                // TODO: detect if admin or customer (optional)
                 frame.showCard("LANDING");
             } else {
                 JOptionPane.showMessageDialog(this,
