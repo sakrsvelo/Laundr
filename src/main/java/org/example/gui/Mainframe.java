@@ -16,6 +16,7 @@ public class Mainframe extends JFrame {
     private static CardLayout cardLayout;
     private static JPanel mainPanel;
 
+    private static String currentUsername;
 
     public Mainframe() {
         fontLoader.loadFonts();
@@ -105,6 +106,14 @@ public class Mainframe extends JFrame {
 
     public boolean isDarkMode() {
         return dark;
+    }
+
+    public static void setCurrentUsername(String username) {
+        currentUsername = username;
+    }
+
+    public static String getCurrentUsername() {
+        return currentUsername;
     }
 
 }

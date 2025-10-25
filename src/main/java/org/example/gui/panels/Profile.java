@@ -1,10 +1,10 @@
 package org.example.gui.panels;
 
+import org.example.gui.Mainframe;
 import org.example.gui.utils.fonts.fontManager;
 import org.example.gui.utils.creators.iconCreator;
 import org.example.gui.utils.creators.roundedBorder;
 import org.example.gui.utils.creators.roundedPanel;
-import org.example.session.SessionManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -44,8 +44,8 @@ public class Profile extends JPanel {
         namePanel.setBorder(BorderFactory.createEmptyBorder(0, 15, 0, 0));
         namePanel.setAlignmentY(Component.CENTER_ALIGNMENT);
 
-        String username = SessionManager.getCurrentUsername();
-        JLabel nameLabel = new JLabel(username);
+        //String username = Mainframe.getCurrentUsername();
+        JLabel nameLabel = new JLabel("username");
         fontManager.applyHeading(nameLabel, 5);
         nameLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 

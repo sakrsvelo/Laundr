@@ -6,7 +6,6 @@ import org.example.gui.Mainframe;
 import org.example.gui.utils.creators.buttonCreator;
 import org.example.gui.utils.creators.iconCreator;
 import org.example.gui.utils.creators.themeToggleButton;
-import org.example.session.SessionManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -130,7 +129,7 @@ public class Login extends JPanel {
             boolean success = dao.validateLogin(username, password);
 
             if (success) {
-                SessionManager.setCurrentUsername(username);
+                Mainframe.setCurrentUsername(username);
 
                 JOptionPane.showMessageDialog(this,
                         "Login successful!",
