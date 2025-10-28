@@ -1,14 +1,17 @@
 package org.example.gui.panels;
 
+import org.example.gui.Mainframe;
 import org.example.gui.utils.fonts.fontManager;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class EditProfile extends JPanel {
-
-    public EditProfile() {
+    private final Mainframe frame;
+    public EditProfile(Mainframe frame) {
+        this.frame = frame;
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setOpaque(false);
         setBorder(BorderFactory.createEmptyBorder(40, 50, 20, 50));
@@ -35,7 +38,7 @@ public class EditProfile extends JPanel {
         namePanel.setBorder(BorderFactory.createEmptyBorder(0, 15, 0, 0));
         namePanel.setAlignmentY(Component.CENTER_ALIGNMENT);
 
-        JLabel nameLabel = new JLabel("John Doe");
+        JLabel nameLabel = new JLabel("abc");
         fontManager.applyHeading(nameLabel, 5);
         nameLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
@@ -49,3 +52,4 @@ public class EditProfile extends JPanel {
         return topPanel;
     }
 }
+

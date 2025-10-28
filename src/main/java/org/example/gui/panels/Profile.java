@@ -12,9 +12,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class Profile extends JPanel {
-    private JLabel usernameLabel;
+    private final Mainframe frame;
 
-    public Profile() {
+    public Profile(Mainframe frame) {
+        this.frame = frame;
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setOpaque(false);
         setBorder(BorderFactory.createEmptyBorder(40, 50, 20, 50));
@@ -59,6 +60,7 @@ public class Profile extends JPanel {
         editProfileLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                frame.showCard("EDIT");
                 System.out.println("click");
             }
 
@@ -187,6 +189,22 @@ public class Profile extends JPanel {
         panel.add(iconLabel);
         panel.add(Box.createVerticalStrut(5));
         panel.add(textLabel);
+
+        MouseAdapter clickHandler = new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                switch (text) {
+                    case "Saved Laundromats" -> frame.showCard("LAUNDROMATS");
+                    case "Digital Wallet" -> frame.showCard("WALLET");
+                    case "To Receive" -> frame.showCard("RECEIVE");
+                    case "To Rate" -> frame.showCard("RATE");
+                    default -> System.out.println("No card found for " + text);
+                }
+            }
+        };
+
+        iconLabel.addMouseListener(clickHandler);
+        textLabel.addMouseListener(clickHandler);
 
         return panel;
     }

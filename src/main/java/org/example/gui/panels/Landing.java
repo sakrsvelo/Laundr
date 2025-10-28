@@ -26,9 +26,12 @@ public class Landing extends JPanel {
         centerPanel = new JPanel(centerLayout);
 
         centerPanel.add(new Dashboard(), "DASHBOARD");
-        centerPanel.add(new Profile(), "PROFILE");
-        centerPanel.add(new Profile(), "PROFILE");
-        centerPanel.add(new EditProfile(), "EDIT");
+        centerPanel.add(new Profile(frame), "PROFILE");
+        centerPanel.add(new Laundromats(), "LAUNDROMATS");
+        centerPanel.add(new EditProfile(frame), "EDIT");
+        centerPanel.add(new DigitalWallet(), "WALLET");
+        centerPanel.add(new ToReceive(), "RECEIVE");
+        centerPanel.add(new ToRate(), "RATE");
         centerPanel.add(new Orders(), "ORDERS");
 
         add(centerPanel, BorderLayout.CENTER);

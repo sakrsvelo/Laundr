@@ -16,7 +16,7 @@ public class DBConnect {
             if (connection == null || connection.isClosed()) {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 connection = DriverManager.getConnection(URL, DEFAULT_USER, DEFAULT_PASSWORD);
-                System.out.println("Connected to database as user: " + DEFAULT_USER);
+//                System.out.println("Connected to database as user: " + DEFAULT_USER);
             }
         } catch (SQLException e) {
             System.err.println("Database connection failed: " + e.getMessage());
@@ -25,7 +25,6 @@ public class DBConnect {
             System.err.println("MySQL driver not found: " + e.getMessage());
             e.printStackTrace();
         }
-
         return connection;
     }
 
