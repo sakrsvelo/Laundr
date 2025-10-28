@@ -198,7 +198,7 @@ public class Profile extends JPanel {
                     case "Digital Wallet" -> frame.showCard("WALLET");
                     case "To Receive" -> frame.showCard("RECEIVE");
                     case "To Rate" -> frame.showCard("RATE");
-                    default -> System.out.println("No card found for " + text);
+                    default -> System.out.println("no card found for " + text);
                 }
             }
         };
