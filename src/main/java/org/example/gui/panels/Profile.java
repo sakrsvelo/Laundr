@@ -190,21 +190,29 @@ public class Profile extends JPanel {
         panel.add(Box.createVerticalStrut(5));
         panel.add(textLabel);
 
-        MouseAdapter clickHandler = new MouseAdapter() {
+        panel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        panel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 switch (text) {
-                    case "Saved Laundromats" -> frame.showCard("LAUNDROMATS");
-                    case "Digital Wallet" -> frame.showCard("WALLET");
-                    case "To Receive" -> frame.showCard("RECEIVE");
-                    case "To Rate" -> frame.showCard("RATE");
-                    default -> System.out.println("no card found for " + text);
+                    case "Saved Laundromats":
+                        frame.showCard("LAUNDROMATS");
+                        break;
+                    case "Digital Wallet":
+                        frame.showCard("WALLET");
+                        break;
+                    case "To Receive":
+                        frame.showCard("RECEIVE");
+                        break;
+                    case "To Rate":
+                        frame.showCard("RATE");
+                        break;
+                    default:
+                        System.out.println("Unknown card: " + text);
+                        break;
                 }
             }
-        };
-
-        iconLabel.addMouseListener(clickHandler);
-        textLabel.addMouseListener(clickHandler);
+        });
 
         return panel;
     }
